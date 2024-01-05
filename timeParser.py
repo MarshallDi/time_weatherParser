@@ -1,25 +1,8 @@
 import requests
 from bs4 import BeautifulSoup
-import pyttsx3
-# from bot import Speak
 
-# inp = input('Weather or time ')
-
-
-
-def Speak(text):
-    engine = pyttsx3.init()
-    voice = engine.getProperty('voices')
-    engine.setProperty('voice', voice[1].id)
-    # rate = engine.getProperty('rate')
-    # engine.setProperty('rate', rate+10)
-    engine.say(text)
-    print(text)
-    engine.runAndWait()
 
 def get_time():
-    # data_ = soup.find('span', id="ct", class_='h1').text
-    # print(data_)
     cookies = {
         'TADANON': 'SDg0K01XZU14L2haY2tGNFI0ejZpOTB5WVpDZEJLanpPc2hTMkdKOHduWVRVMDdmZytQcGpSTzcxaGFpWktlKw--',
         '_sharedID': '79049df9-f63b-40e9-b2ac-37be65abd6e9',
@@ -58,11 +41,8 @@ def get_time():
 
     soup = BeautifulSoup(src, 'html.parser')
     print(soup.find('span', id="ct", class_='h1').text)
-    # Speak(soup.find('span', id="ct", class_='h1').text)
 
 def get_weather1():
-    # data_ = 
-    # print(data_)
     cookies = {
         'TADANON': 'SDg0K01XZU14L2haY2tGNFI0ejZpOTB5WVpDZEJLanpPc2hTMkdKOHduWVRVMDdmZytQcGpSTzcxaGFpWktlKw--',
         '_sharedID': '79049df9-f63b-40e9-b2ac-37be65abd6e9',
@@ -96,20 +76,12 @@ def get_weather1():
     }
 
     response = requests.get('https://www.timeanddate.com/worldclock/kazakstan/astana', cookies=cookies, headers=headers)
-    # print(response.text)
     src = response.text
 
     soup = BeautifulSoup(src, 'html.parser')
     print(soup.find(id='wt-tp').text)
-    # Speak(soup.find(id='wt-tp').text)
 
 get_time()
 get_weather1()
 
-# get_weather1()
-# if 'weather' in inp or '1' in inp:
-#     get_weather()
-# elif 'time' in inp or '2' in inp:
-#     get_time()
-# else:
-#     print('try again')
+
